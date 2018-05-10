@@ -1,0 +1,117 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: #CCC;
+}
+
+#app {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 10px 0;
+  background-color: #FFF;
+  box-sizing: border-box;
+}
+
+@media (min-width: 420px) {
+  #app {
+    width: 420px;
+  }
+}
+
+.btn {
+  border-radius: 6px;
+  padding: 8px 15px;
+  font-size: 14px;
+  background-color: #337ab7;
+  color: #FFF;
+}
+
+.btn > * {
+  vertical-align: middle;
+}
+
+.btn.inActive {
+  background-color: #CCC;
+}
+
+.nav {
+  padding: 10px 10px 20px 10px;
+}
+
+.nav .fa-times-circle {
+  font-size: 28px;
+  color: #666;
+}
+
+.scoreTable {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.scoreTable td,
+.scoreTable th {
+  border: 1px solid #333;
+  padding: 5px;
+}
+
+.scoreTable td {
+  text-align: right;
+  width: 60px;
+}
+
+.totalRow td,
+.totalRow th {
+  background-color: #ffc490;
+}
+
+.scoreTable .fa-edit {
+  color: #398439;
+}
+
+.formTable {
+  margin: 0 auto;
+  font-size: 20px;
+  border-collapse: collapse;
+}
+
+.formTable th {
+  border-bottom: 2px solid #333;
+  padding: 10px;
+}
+
+.formTable td {
+  padding: 30px 10px 0 10px;
+}
+
+.formTable input[type="text"] {
+  border: none;
+  border-bottom: 1px solid #999;
+  width: 80px;
+  font-size: 20px;
+  outline: none;
+  text-align: right;
+  padding: 3px 10px;
+  border-radius: 0;
+  -webkit-appearance: none;
+  color: #333;
+}
+
+.formTable input[type="text"][disabled] {
+  background-color: #fff566;
+  color: #333;
+  -webkit-text-fill-color: #333;
+  opacity: 1;
+  border-bottom: none;
+}
+
+.btns {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.btns .btn {
+  font-size: 22px;
+  margin: 10px;
+}

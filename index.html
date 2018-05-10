@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Page Title</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" media="screen" href="app.css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <div v-if="viewMode === 'list'">
+    <div class="nav">
+      <span class="btn" v-on:click="toNewScore()">
+        <i class="fas fa-plus-circle"></i>
+        <span>New</span>
+      </span>
+    </div>
+    <table class="scoreTable">
+      <thead>
+        <tr>
+          <th></th>
+          <th v-for="name in members">
+            {{name}}
+          </th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(game, i) in games">
+          <th>{{i + 1}}</th>
+          <td v-for="score in game.scores">
+            {{score}}
+          </td>
+          <th><i v-on:click="toEditScore(game)" class="fas fa-edit"></i></th>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="totalRow">
+          <th></th>
+          <td v-for="totalScore in calcTotalScores()">
+            {{totalScore}}
+          </td>
+          <th></th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <div v-if="viewMode === 'form'">
+    <div class="nav">
+      <span v-on:click="cancel()"><i class="fas fa-times-circle"></i></span>
+    </div>
+    <table class="formTable">
+      <thead>
+        <th>Name</th>
+        <th>Score</th>
+      </thead>
+      <tbody>
+        <tr v-for="(inputScore, i) in inputScores">
+          <td>{{members[i]}}</td>
+          <td>
+            <span v-if="inputScore === 'top'">
+              <input type="text" disabled v-bind:value="topScore()">
+            </span>
+            <span v-if="inputScore !== 'top'">
+              <input v-model="inputScores[i]" v-on:input="onInputScore()" type="text">
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="btns">
+      <span v-on:click="save()" :class="{ btn: true, inActive: !isValidInput() }">Save</span>
+    </div>
+  </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
